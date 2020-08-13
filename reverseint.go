@@ -1,33 +1,41 @@
-package Reverseint
+package reverseint
 
 import (
-	"fmt"
 	"strconv"
 
 	rev "github.com/shawnwollenberg/goReverseString"
 )
 
+// --- Directions
+// Given an integer, return an integer that is the reverse
+// ordering of numbers.
+// --- Examples
+//   reverseInt(15) === 51
+//   reverseInt(981) === 189
+//   reverseInt(500) === 5
+//   reverseInt(-15) === -51
+//   reverseInt(-90) === -9
+
 //Adjusted Solution found online - Doesnt require converting to string (cleaner)
-func Reverse_int(n int) int {
+func reverseInt(n int) int {
 	mult := 1
 	if n < 0 {
 		mult = -1
 		n = -n
 	}
-	new_int := 0
+	newInt := 0
 
 	for n > 0 {
 		//remainder of each spot (right to left), next time through mult by 10 and add new remainder and continue dividing source int by 10 until ==0
 		remainder := n % 10
-		new_int *= 10
-		new_int += remainder
-		fmt.Println(remainder, new_int, n)
+		newInt *= 10
+		newInt += remainder
 		n /= 10
 	}
-	return mult * new_int
+	return mult * newInt
 }
 
-func ReverseIntConvString(x int) int {
+func reverseIntConvString(x int) int {
 	imult := 1
 	str := strconv.Itoa(x)
 	if str[:1] == "-" {
